@@ -46,7 +46,7 @@ namespace OctoPrintPostProcessorUploader
 
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == HttpStatusCode.OK)
-            {
+            {               
                 return JObject.Parse(response.Content)["state"].ToString();
             }
             
@@ -59,19 +59,20 @@ namespace OctoPrintPostProcessorUploader
             print.IsEnabled = false;
             remove.IsEnabled = false;
 
-            var client = new RestClient(opArgs.Server);
-            var request = new RestRequest("api/files/local", Method.POST);
+            var client2 = new RestClient(opArgs.Server);
+            var request = new RestRequest("/api/files/local", Method.POST);
+            request.AlwaysMultipartFormData = true;
+            request.RequestFormat = RestSharp.DataFormat.Json;
             request.AddHeader("X-Api-Key", opArgs.ApiKey);
             request.AddHeader("Content-Type", "multipart/form-data");
-            request.IncreaseNumAttempts();
             request.AddFile("file", opArgs.Path + "\\"+ opArgs.File, "application/octet-stream");
 
             if (startPrint)
             {
                 request.AddParameter("print", "true");
             }
-
-            IRestResponse response = client.Execute(request);
+            
+            IRestResponse response = client2.Execute(request);
             switch (response.StatusCode)
             { 
                 case HttpStatusCode.Created:
