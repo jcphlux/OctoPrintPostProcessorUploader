@@ -3,10 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:OctoPrintPostProcessorUploader"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="OctoPrint Uploader" Height="139.855" Width="426.812" ResizeMode="NoResize" Topmost="True" WindowStyle="ToolWindow">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <Label Content="Status:"/>
+            <Label x:Name="status" Content="Label"/>
+        </StackPanel>
+        <StackPanel Margin="0" Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right">
+            <CheckBox x:Name="remove" Content="Remove Source" IsChecked="True" IsEnabled="False"/>
+            <Button x:Name="upload" Content="Upload Only" Margin="12,0,0,0" Padding="5,1" Click="Upload_Click" IsEnabled="False"/>
+            <Button x:Name="print" Content="Upload/Print" Margin="12,0,0,0" Padding="5,1" Click="Print_Click" IsEnabled="False"/>
+            <Button x:Name="cancel" Content="Cancel" Margin="12,0,0,0" Padding="5,1" Click="Cancel_Click"/>
+        </StackPanel>
     </Grid>
 </Window>
