@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OctoPrintPostProcessorUploader", "OctoPrintPostProcessorUploader.csproj", "{CC43C4D0-9841-4B6F-9B61-0E940CC86291}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplify3DOctoPrintUploader", "Simplify3DOctoPrintUploader.csproj", "{CC43C4D0-9841-4B6F-9B61-0E940CC86291}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

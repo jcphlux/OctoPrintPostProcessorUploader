@@ -1,4 +1,4 @@
-﻿namespace OctoPrintPostProcessorUploader
+﻿namespace Simplify3DOctoPrintUploader
 {
     public class OctoPrintArgs
     {

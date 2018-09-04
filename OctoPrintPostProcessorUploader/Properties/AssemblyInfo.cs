@@ -7,11 +7,11 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("OctoPrintPostProcessorUploader")]
+[assembly: AssemblyTitle("Simplify3D OctoPrint Uploader")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("OctoPrintPostProcessorUploader")]
+[assembly: AssemblyCompany("Phlux Apps LLC")]
+[assembly: AssemblyProduct("Simplify3DOctoPrintUploader")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
