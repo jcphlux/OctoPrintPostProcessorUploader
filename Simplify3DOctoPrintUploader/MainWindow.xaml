@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="OctoPrint Uploader" Height="150" Width="430" ResizeMode="NoResize" Topmost="True" Icon="Logo.ico" WindowStartupLocation="CenterScreen">
+        Title="Simplify3D OctoPrint Uploader by Phlux Apps LLC" Height="150" Width="430" ResizeMode="NoResize" Topmost="True" Icon="Logo.ico" WindowStartupLocation="CenterScreen">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -28,6 +28,7 @@
             <CheckBox x:Name="remove" Content="Remove Source" Margin="12,0,0,5" IsChecked="True" IsEnabled="False" ToolTip="Remove the file after uploading."/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
+            <Button Content="About" Margin="0,0,105,0" Padding="5,1" Click="About_Click" ToolTip="About OctoPrint Uploader by Phlux Apps LLC"/>
             <Button x:Name="upload" Content="Upload Only" Margin="12,0,0,0" Padding="5,1" Click="Upload_Click" IsEnabled="False" ToolTip="Only upload the file."/>
             <Button x:Name="print" Content="Upload/Print" Margin="12,0,0,0" Padding="5,1" Click="Print_Click" IsEnabled="False" ToolTip="Upload and start the print on the file."/>
             <Button x:Name="cancel" Content="Cancel" Margin="12,0,0,0" Padding="5,1" Click="Cancel_Click" ToolTip="Cancel the upload."/>

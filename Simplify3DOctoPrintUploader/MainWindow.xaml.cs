@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
-using RestSharp;
+﻿using RestSharp;
+using Simplify3DOctoPrintUploader.Models;
 using System;
 using System.Net;
 using System.Windows;
@@ -27,13 +27,13 @@ namespace Simplify3DOctoPrintUploader
 
             IRestResponse response = client.Execute(request);
 
-            var state = "";
+            CurrentJob currentJob = null;
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                state = JObject.Parse(response.Content)["state"].ToString();
+                currentJob = SimpleJson.SimpleJson.DeserializeObject<CurrentJob>(response.Content);
             }
 
-            if (state == "Operational")
+            if (currentJob.state == "Operational")
             {
                 upload.IsEnabled = true;
                 print.IsEnabled = true;
@@ -42,7 +42,7 @@ namespace Simplify3DOctoPrintUploader
                 refresh.Visibility = Visibility.Hidden;
                 status.Content = "OctoPrint is ready to start printing.";
             }
-            else if (state == "Printing")
+            else if (currentJob.state == "Printing")
             {
                 upload.IsEnabled = true;
                 print.IsEnabled = false;
@@ -51,7 +51,7 @@ namespace Simplify3DOctoPrintUploader
                 refresh.Visibility = Visibility.Visible;
                 status.Content = "OctoPrint is currently printing.";
             }
-            else if (state == "Cancelling")
+            else if (currentJob.state == "Cancelling")
             {
                 upload.IsEnabled = true;
                 print.IsEnabled = false;
@@ -62,7 +62,7 @@ namespace Simplify3DOctoPrintUploader
             }
             else
             {
-                status.Content = state +  " OctoPrint is offline or there is a invalid parameter.";
+                status.Content = "OctoPrint is offline or there is a invalid parameter.";
             }
         }
 
@@ -119,7 +119,7 @@ namespace Simplify3DOctoPrintUploader
                 System.Diagnostics.Process.Start(opArgs.Server);
             }
 
-            if(remove.IsChecked == true)
+            if (remove.IsChecked == true)
             {
                 System.IO.File.Delete(opArgs.Path + "\\" + opArgs.File);
             }
@@ -131,6 +131,12 @@ namespace Simplify3DOctoPrintUploader
             GetState();
         }
 
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            About about = new About();
+
+            about.Show();
+        }
         private void Upload_Click(object sender, RoutedEventArgs e)
         {
             PushFile(false);

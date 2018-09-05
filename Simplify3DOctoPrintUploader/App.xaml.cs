@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Simplify3DOctoPrintUploader
@@ -30,12 +25,12 @@ namespace Simplify3DOctoPrintUploader
                         return;
                     }
 
-                    switch(pair[0]){
-                        case "-p":
-                            opArgs.Path = pair[1];
-                            break;
+                    switch (pair[0])
+                    {
                         case "-f":
-                            opArgs.File = pair[1];
+                            var index = pair[1].LastIndexOf('\\');
+                            opArgs.Path = pair[1].Substring(0, index);
+                            opArgs.File = pair[1].Substring(index + 1);
                             break;
                         case "-s":
                             opArgs.Server = pair[1];
@@ -56,13 +51,16 @@ namespace Simplify3DOctoPrintUploader
             else
             {
                 InvalidArgs();
-            }           
+            }
         }
 
         private void InvalidArgs()
         {
-            MessageBox.Show("Please pass in valid Arguments.  \n\n Commands: \n -p={path} \n -f={filename} \n -s={OctoPrintServer} \n -a={APIKey}", "OctoPrint Post Processor Uploader", MessageBoxButton.OK, MessageBoxImage.Error);
-            Environment.Exit(0);
+            About about = new About();
+
+            about.Show();
+            MessageBox.Show("Please pass in valid Arguments.  \n\n Commands: \n -f=[output_filepath] \n -s=[OctoPrintServer] \n -a=[APIKey]", "Simplify3D OctoPrint Uploader", MessageBoxButton.OK, MessageBoxImage.Error);
+            //Environment.Exit(0);
         }
 
     }
